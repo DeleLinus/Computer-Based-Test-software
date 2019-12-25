@@ -1,39 +1,49 @@
 from tkinter import *
-class  CBT:
-	def __init__(self):
-		self.root=Tk()
-		self.QA={"Who is the president of Nigeria?":"Buhari", "What is the product of 2 and 6?":\
-    	"12", "Which State in Nigeria is SQI college located?": "Oyo State","What Language is this program written?":\
-    		"Python"}
-		self.root.mainloop()
-exam=CBT()
+
+# def main():
+#     root=Tk()
+#     app=SignupWindow(root)
+#     root.mainloop()
+
+
+class Signupwindow:
+    def __init__(self,master):
+        self.master=master
+        self.master.title("OAU Computer Based Assessment")
+        self.master.geometry('1100x600')
+        self.master.config(bg="powder blue")
+        self.Matricnum=StringVar()
+        self.Password=StringVar()
+        self.Titlelbl=Label(self.master,text="CANDIDATE REGISTRATION AND LOGIN  PAGE",
+            font=("arial",30,"bold"),bg="powder blue", pady=30).pack(side=TOP)
+        self.frame=Frame(self.master)#, bg="red")
+        self.frame.pack(side="left")
+        self.matricnumLbl=Label(self.frame, text="Matric Number:",font=("arial",20,"bold"),
+            bg="powder blue").grid(row=0, column=0, pady=20)
+        self.paswordLbl=Label(self.frame,text="Password:",font=("arial",20,"bold"),
+            bg="powder blue").grid(row=1, column=0, pady=20)
+
+
+    #==========================================================================
+        
+
+    def new_window(self):
+        self.newWindow=Toplevel(self.master)
+        self.app=QuestionWindow(self.newWindow)
+
+class Questionwindow:
+    def __init__(self,master):
+        self.master=master
+        self.master.title("*****************************")
+        self.master.geometry('600x400')
+        self.master.config(bg="powder blue")
+        self.frame=Frame(self.master)
+        self.frame.pack()
+
+root=Tk()
+app=Signupwindow(root)
+root.mainloop()
 
 
 
 
-
-
-
-'''
-#3_CBT
-#in this case, the key is made the answer to the questions
-#from string import punctuations
-QA={"Who is the president of Nigeria?":"Buhari", "What is the product of 2 and 6?":\
-    "12", "Which State in Nigeria is SQI college located?": "Oyo State","What Language is this program written?":\
-    "Python"}
-O_List=["(a) Jega (b) Omasola (c) Buhari","(a) 10 (b) 12 (c) 1","(a) Enugu State (b) Oyo State (c) Ondo State",\
-      "(a) Anaconda (b) Python (c) Java"]
-O_count=0
-A_count=0
-for i in QA:
-    print(i)
-    print(O_List[O_count])
-    O_count+=1
-    UA=input("Enter the correct Answer (Note: as written in the options):")
-    print("\n")
-    if UA.lower()==QA[i].lower():
-        A_count+=1
-        #print("You got " ,A_count, " out of ", O_count, " correctly")
-    else:
-        continue
-print ("Your score is ",A_count, " over ", O_count, )'''
